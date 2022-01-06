@@ -114,8 +114,8 @@ class Php_excel extends CI_Controller{
 		$test->setCellValue('F'.$i, $value->photo);
 		$test->setCellValue('G'.$i, $value->matricule);
 	*/
-		// image_integre($image, $objPHPExcel, 'qrcode',$value->matricule.'.png', 'QR_'.$value->matricule , 'QR_'.$value->matricule, 50, 'G'.$i);
-		// image_integre($image, $objPHPExcel, 'profil_pics',$value->photo, $value->matricule , $value->nom.$value->prenoms, 50, 'F'.$i );
+		image_integre($image, $objPHPExcel, 'qrcode',$value->matricule.'.png', 'QR_'.$value->matricule , 'QR_'.$value->matricule, 50, 'G'.$i);
+		image_integre($image, $objPHPExcel, 'profil_pics',$value->photo, $value->matricule , $value->nom.$value->prenoms, 50, 'F'.$i );
 
 		$i++;
 	}
