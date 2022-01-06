@@ -1,5 +1,6 @@
 
 <?php
+ini_set("memory_limit","-1");
 defined('BASEPATH') OR exit ('No direct script access allowed');
 
 class Php_excel extends CI_Controller{
