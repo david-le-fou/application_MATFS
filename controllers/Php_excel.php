@@ -45,7 +45,31 @@ class Php_excel extends CI_Controller{
 		$hdrs = @get_headers($url);
 		return is_array($hdrs) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$hdrs[0]) : false;
 	}
+	private function filtre_extention($images){
+		$chemin = 'images/profil_pics';
+		$result = explode('.', $images);
+		if($result[1] == 'jpg' or $result[1] == 'jpeg' or $result[1] == 'JPG'){
+			if($result[1] =='jpg'){
+				$ext = 'jpg'; 
+			}
+			if($result[1] =='JPG'){
+				$ext = strtoupper($result[1]);
+			}
+			$file = base_url('assets/'.$chemin.'/'.$result[0].'.'.$ext);
+			if($this->url_exists($file)) return $result[0].'.'.$ext;
+			else return null;
+			
+		}
+	}
+	public function affiche_tous_tous_image(){
+		$width = 100;
+		foreach ($this->Personnel_model->maka_donnees_badge() as $value) {
+			echo $value->photo."<img width='$width' heigth='$width'src='".base_url('assets/images/profil_pics/'.$this->filtre_extention($value->photo))."'/>"."<br/>";
+		}
+	}
 }
+
+if(isset($_REQUEST['mode'])){
 
 	$nomfichier = 'test';
 
@@ -143,3 +167,5 @@ class Php_excel extends CI_Controller{
 	$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 	$objWriter->save('php://output');
 	exit;
+		
+}

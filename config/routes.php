@@ -60,6 +60,6 @@ $route['Distinction'] = 'Distinction';
 $route['Sanction'] = 'Sanction';
 $route['Cessation'] = 'Cessation';
 $route['qr_code'] = 'Qr_controller';
-$route['phpexcel'] = 'php_excel';
+$route['phpexcel'] = 'Php_excel';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
